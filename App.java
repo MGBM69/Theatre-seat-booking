@@ -76,11 +76,29 @@ public class App {
     }
     private static void buyTicket() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter row number: ");
-        int row = input.nextInt() - 1;
-        System.out.print("Enter seat number: ");
-        int seat = input.nextInt() - 1;
-        input.close();
+        int row;
+        while(true){
+            System.out.print("Enter row number (1-"+seats.length+"): ");
+            row = input.nextInt() ;
+            if(row>=1 && row<= seats.length ){
+                break;
+            }
+            System.out.println("Invalid row number!");
+
+        }
+        row--;
+        int seat;
+        while(true){
+            System.out.print("Enter seat number (1-"+seats[row].length+"): ");
+            seat = input.nextInt() ;
+            if(seat>=1 && seat<=seats[row].length){
+                break;
+            }
+            System.out.println("Invalid seat number!");
+        }
+        seat--;
+        
+          input.close();
         // Check if the seat is available or not
         if (seats[row][seat] == 0) {
             seats[row][seat] = 1;
